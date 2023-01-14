@@ -10,4 +10,4 @@ Users can:
 Future planned features include:
 - Allowing user to sort by IBU & ABV
 - Display of complete brewery information, including address and phone
--
+- Create a favorites / shopping list
