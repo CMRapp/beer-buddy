@@ -1,11 +1,6 @@
-spring:
-  datasource:
-    username: beer
-    password: beer
-    url: jdbc:mysql://localhost:3306/beer
-    
 logging:
   level: 
+    root: warn
     '[com.cmrwebstudio]': debug 
 
     

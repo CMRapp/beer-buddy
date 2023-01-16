@@ -16,8 +16,8 @@ public class Beer {
 	private String name;
 	private int category_id;
 	private int style_id;
-	private float abv;
-	private float ibu;
+	private double abv;
+	private double ibu;
 	private String beer_desc;
 	private int flavor_profile;
 	
