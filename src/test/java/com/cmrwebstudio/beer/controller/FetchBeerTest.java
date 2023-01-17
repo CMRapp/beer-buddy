@@ -37,6 +37,7 @@ class FetchBeerTest extends FetchBeerTestSupport {
 		
 		// And: The actual list is the same as the expected list
 		List<Beer> expected = buildExpected();
+		
 		assertThat(response.getBody()).isEqualTo(expected);
 	}
 

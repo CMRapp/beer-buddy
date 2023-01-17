@@ -64,5 +64,6 @@ public interface BeerBuddyController {
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
 	List<Beer> fetchBeers(@RequestParam(required = false) int beer_id);
+	
 	// @formatter:on
 }

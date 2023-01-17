@@ -1,5 +1,9 @@
 package com.cmrwebstudio.beer.entity;
 
+import java.util.Comparator;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Beer {
+public class Beer implements Comparable<Beer> {
 	private int beer_id;
 	private int brewery_id;
 	private String name;
@@ -20,5 +24,13 @@ public class Beer {
 	private double ibu;
 	private String beer_desc;
 	private int flavor_profile;
+	
+
+	@Override
+	public int compareTo(Beer that) {
+		return Comparator
+				.comparing(Beer::getBeer_id)
+				.compare(this,  that);
+	}
 	
 }
