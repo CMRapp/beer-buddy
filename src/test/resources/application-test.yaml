@@ -1,8 +1,6 @@
 spring:
   datasource:
-    username: beer
-    password: beer
-    url: jdbc:mysql://localhost:3306/beer
+    url: jdbc:h2:mem:beer;mode=MYSQL
     
 logging:
   level: 

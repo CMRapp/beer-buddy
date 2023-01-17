@@ -23,7 +23,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
 @RequestMapping("/beers")
 
 // configure swagger OpenAPI for testing 
-@OpenAPIDefinition(info = @Info(title = "Beer Buddy Index"), servers = {
+@OpenAPIDefinition(info = @Info(title = "Beer Buddy World Beer Listing"), servers = {
 		@Server(url = "htp://localhost:8080", description = "Local server.")})
 
 
@@ -57,7 +57,7 @@ public interface BeerBuddyController {
 							name = "beer_id", 
 							allowEmptyValue = false, 
 							required = false, 
-							description = "The beer id number (i.e. 1,2,21")	
+							description = "The beer id number (1 through 5901")	
 		}
 	)
 		
