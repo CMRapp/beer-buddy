@@ -10,9 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Breweries {
-	private int breweryId;
-	private String breweryName;
-	private String country;
-	private String website;
+	public class Style {
+		private int styleId;
+		private int categoryId; //foreign key
+		private String styleName;
 }

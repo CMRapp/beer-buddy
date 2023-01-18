@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.cmrwebstudio.beer.entity.Beer;
+import com.cmrwebstudio.beer.entity.Category;
+import com.cmrwebstudio.beer.entity.Flavor;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,8 +33,8 @@ import io.swagger.v3.oas.annotations.servers.Server;
 public interface BeerBuddyController {
 	// @formatter: off
 	@Operation(
-		summary = "Returns a list of beers",
-		description = "Returns a list of beers given a beer id",
+		summary = "Returns a list of beers given a beer category",
+		description = "Returns a list of beers given a beer category and/ flavor profile",
 		responses = {
 				@ApiResponse(
 						responseCode = "200", 
@@ -54,16 +56,22 @@ public interface BeerBuddyController {
 				},
 				parameters = {
 						@Parameter(
-							name = "beer_id", 
+							name = "category", 
 							allowEmptyValue = false, 
 							required = false, 
-							description = "The beer id number (1 through 5901")	
+							description = "Beer category ie:'BRITISH_ALE'"),
+						@Parameter(
+							name = "flavor", 
+							allowEmptyValue = false, 
+							required = false, 
+							description = "Flavor profile ie:'CRISP'")
 		}
 	)
 		
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
-	List<Beer> fetchBeers(@RequestParam(required = false) int beer_id);
+	List<Beer> fetchBeers(@RequestParam(required = false) Category category,
+							@RequestParam(required = false) Flavor flavor);
 	
 	// @formatter:on
 }

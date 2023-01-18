@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.cmrwebstudio.beer.dao.BeerBuddyDao;
 import com.cmrwebstudio.beer.entity.Beer;
+import com.cmrwebstudio.beer.entity.Category;
+import com.cmrwebstudio.beer.entity.Flavor;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,10 +22,10 @@ public class DefaultBeerBuddyService implements BeerBuddyService {
 	private BeerBuddyDao beerBuddyDao;
 	
 	@Override
-	public List<Beer> fetchBeers(int beer_id) {
-		log.info("The fetchBeers method was called with id = {}", beer_id);
+	public List<Beer> fetchBeers(Category category, Flavor flavor) {
+		log.info("The fetchBeers method was called with category = {} and flavor = {}", category, flavor);
 		
-		List<Beer> beers = beerBuddyDao.fetchBeers(beer_id);
+		List<Beer> beers = beerBuddyDao.fetchBeers(category, flavor);
 		
 		Collections.sort(beers);
 		return beers;

@@ -12,6 +12,8 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.cmrwebstudio.beer.entity.Beer;
+import com.cmrwebstudio.beer.entity.Category;
+import com.cmrwebstudio.beer.entity.Flavor;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,8 +26,8 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 	
 	
 	@Override
-	public List<Beer> fetchBeers(int beer_id) {
-		log.debug("DAO: beer_id = {}", beer_id);
+	public List<Beer> fetchBeers(Category category, Flavor flavor) {
+		log.debug("DAO: category = {} and flavor = {}", category, flavor);
 		
 		// @formatter: off
 		String sql = ""
@@ -35,7 +37,8 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 		// @formatter: on
 		
 		Map<String, Object> params = new HashMap<>();
-		params.put("beer_id", beer_id);
+		params.put("category", category);
+		params.put("flavor", flavor);
 		
 		return jdbcTemplate.query(sql, params, new RowMapper<>() {
 
@@ -43,14 +46,14 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 		public Beer mapRow(ResultSet rs, int rowNum) throws SQLException {
 			// @formatter: off
 			return Beer.builder()
-				.beer_id(rs.getInt("beer_id"))
-				.brewery_id(rs.getInt("brewery_id"))
+				.beerId(rs.getInt("beer_id"))
+				.breweryId(rs.getInt("brewery_id"))
 				.name(rs.getString("name"))
-				.category_id(rs.getInt("category_id"))
-				.style_id(rs.getInt("style_id"))
+				.categoryId(Category.valueOf(rs.getString("category_id")))
+				.styleId(rs.getInt("style_id"))
 				.abv(rs.getDouble("abv"))
 				.ibu(rs.getDouble("ibu"))
-				.flavor_profile(rs.getInt("flavor_profile"))
+				.flavorProfile(Flavor.valueOf(rs.getString("flavor_profile")))
 				.build();
 			// @formatter:on
 			}});

@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.cmrwebstudio.beer.entity.Beer;
+import com.cmrwebstudio.beer.entity.Category;
+import com.cmrwebstudio.beer.entity.Flavor;
 
 public class FetchBeerTestSupport extends BaseTest {
 
@@ -13,14 +15,14 @@ public class FetchBeerTestSupport extends BaseTest {
 		
 		// @formatter:off
 			list.add(Beer.builder()
-					.beer_id(1)
-					.brewery_id(812)
+					.beerId(1)
+					.breweryId(812)
 					.name("Hocus Pocus")
-					.category_id(11)
-					.style_id(116)
+					.categoryId(Category.OTHER_CATEGORY)
+					.styleId(116)
 					.abv(4.5)
 					.ibu(0.0)
-					.flavor_profile(2)
+					.flavorProfile(Flavor.CRISP)
 					.build());
 			
 //			list.add(Beer.builder()
