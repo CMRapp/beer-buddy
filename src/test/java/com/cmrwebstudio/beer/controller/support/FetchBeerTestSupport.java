@@ -15,25 +15,25 @@ public class FetchBeerTestSupport extends BaseTest {
 		
 		// @formatter:off
 			list.add(Beer.builder()
-					.beerId(1)
-					.breweryId(812)
-					.name("Hocus Pocus")
-					.categoryId(Category.OTHER_CATEGORY)
-					.styleId(116)
-					.abv(4.5)
-					.ibu(0.0)
-					.flavorProfile(Flavor.CRISP)
+					.beerId(8)
+					.breweryId(1099)
+					.name("Oatmeal Stout")
+					.categoryId(Category.NORTH_AMERICAN_ALE)
+					.styleId(42)
+					.abv(5.0)
+					.ibu(0)
+					.flavorProfile(Flavor.MALTY)
 					.build());
 			
 //			list.add(Beer.builder()
-//					.beer_id(213)
-//					.brewery_id(779)
+//					.beerId(213)
+//					.breweryId(779)
 //					.name("Black Jack Porter")
-//					.category_id(2)
-//					.style_id(25)
+//					.categoryId(Category.IRISH_ALE)
+//					.styleId(25)
 //					.abv(0.0)
-//					.ibu(0.0)
-//					.flavor_profile(0)
+//					.ibu(0)
+//					.flavorProfile(Flavor.MALTY)
 //					.build());
 		// @formatter:on
 		

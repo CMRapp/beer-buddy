@@ -59,12 +59,12 @@ public interface BeerBuddyController {
 							name = "category", 
 							allowEmptyValue = false, 
 							required = false, 
-							description = "Beer category ie:'BRITISH_ALE'"),
+							description = "Select Beer Category"),
 						@Parameter(
 							name = "flavor", 
 							allowEmptyValue = false, 
 							required = false, 
-							description = "Flavor profile ie:'CRISP'")
+							description = "Select Flavor Profile")
 		}
 	)
 		

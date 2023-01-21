@@ -19,7 +19,7 @@ public class Beer implements Comparable<Beer> {
 	private Category categoryId;
 	private int styleId;
 	private double abv;
-	private double ibu;
+	private int ibu;
 	private String beerDesc;
 	private Flavor flavorProfile;
 	

@@ -12,11 +12,11 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.jdbc.SqlConfig;
 
 import com.cmrwebstudio.beer.controller.support.FetchBeerTestSupport;
 import com.cmrwebstudio.beer.entity.Beer;
+import com.cmrwebstudio.beer.entity.Category;
+import com.cmrwebstudio.beer.entity.Flavor;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
@@ -26,10 +26,12 @@ class FetchBeerTest extends FetchBeerTestSupport {
 	@Test
 	void testThatBeersAreReturnedWhenValidDataIsSupplied() {
 		
-		//Given a valid beer id and URI
-		int beer_id = 1;
-		String uri = String.format("%s?beer_id=%s", getBaseUri(), beer_id);
+		//Given a valid category, profile and URI
+		Category category = Category.NORTH_AMERICAN_ALE;
+		Flavor flavor = Flavor.MALTY;
 		
+		String uri = String.format("%s?category=%s&flavor=%s", getBaseUri(), category, flavor);
+				
 		//When a connection is made to the URI
 		ResponseEntity<List<Beer>> response = getRestTemplate().exchange(uri, HttpMethod.GET, null,
 				new ParameterizedTypeReference<>() {});

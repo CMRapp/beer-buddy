@@ -33,7 +33,7 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 		String sql = ""
 			+ "SELECT * "
 			+ "FROM beers "
-			+ "WHERE beer_id = :beer_id";
+			+ "WHERE category_id = :category and flavor_profile =:flavor";
 		// @formatter: on
 		
 		Map<String, Object> params = new HashMap<>();
@@ -52,7 +52,7 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 				.categoryId(Category.valueOf(rs.getString("category_id")))
 				.styleId(rs.getInt("style_id"))
 				.abv(rs.getDouble("abv"))
-				.ibu(rs.getDouble("ibu"))
+				.ibu(rs.getInt("ibu"))
 				.flavorProfile(Flavor.valueOf(rs.getString("flavor_profile")))
 				.build();
 			// @formatter:on
