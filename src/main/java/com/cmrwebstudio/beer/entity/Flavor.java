@@ -1,6 +1,6 @@
 package com.cmrwebstudio.beer.entity;
 
-public enum Flavor {
-	BITTER, CRISP, FUNKY, SOUR, TART, SMOKEY, ROASTY,
-	MALTY, HOPPY, FRUITY, DRY, TASTELESS, UNSPECIFIED
+public class Flavor {
+	int flavorPk;
+	String name;
 }

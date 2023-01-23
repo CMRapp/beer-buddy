@@ -3,7 +3,7 @@ spring:
     password: beer
     username: beer
     url: jdbc:mysql://localhost:3306/beer
-  
+    
 logging:
   level: 
     root: warn

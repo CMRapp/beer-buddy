@@ -6,7 +6,6 @@ import java.util.List;
 
 import com.cmrwebstudio.beer.entity.Beer;
 import com.cmrwebstudio.beer.entity.Category;
-import com.cmrwebstudio.beer.entity.Flavor;
 
 public class FetchBeerTestSupport extends BaseTest {
 
@@ -15,26 +14,14 @@ public class FetchBeerTestSupport extends BaseTest {
 		
 		// @formatter:off
 			list.add(Beer.builder()
-					.beerId(8)
-					.breweryId(1099)
-					.name("Oatmeal Stout")
-					.categoryId(Category.NORTH_AMERICAN_ALE)
-					.styleId(42)
+					.beerId(4)
+					.breweryId(3)
+					.name("Samuel Adams Boston Lager")
+					.categoryId(Category.LAGER)
 					.abv(5.0)
-					.ibu(0)
-					.flavorProfile(Flavor.MALTY)
+					.ibu(30)
+					.flavorProfile("Hoppy")
 					.build());
-			
-//			list.add(Beer.builder()
-//					.beerId(213)
-//					.breweryId(779)
-//					.name("Black Jack Porter")
-//					.categoryId(Category.IRISH_ALE)
-//					.styleId(25)
-//					.abv(0.0)
-//					.ibu(0)
-//					.flavorProfile(Flavor.MALTY)
-//					.build());
 		// @formatter:on
 		
 	Collections.sort(list);		

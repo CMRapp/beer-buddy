@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 import com.cmrwebstudio.beer.entity.Beer;
 import com.cmrwebstudio.beer.entity.Category;
-import com.cmrwebstudio.beer.entity.Flavor;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,18 +25,18 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 	
 	
 	@Override
-	public List<Beer> fetchBeers(Category category, Flavor flavor) {
+	public List<Beer> fetchBeers(Category category, String flavor) {
 		log.debug("DAO: category = {} and flavor = {}", category, flavor);
 		
 		// @formatter: off
 		String sql = ""
 			+ "SELECT * "
 			+ "FROM beers "
-			+ "WHERE category_id = :category and flavor_profile =:flavor";
+			+ "WHERE category = :category AND flavor = :flavor";
 		// @formatter: on
 		
 		Map<String, Object> params = new HashMap<>();
-		params.put("category", category);
+		params.put("category", category.toString());
 		params.put("flavor", flavor);
 		
 		return jdbcTemplate.query(sql, params, new RowMapper<>() {
@@ -46,14 +45,13 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 		public Beer mapRow(ResultSet rs, int rowNum) throws SQLException {
 			// @formatter: off
 			return Beer.builder()
-				.beerId(rs.getInt("beer_id"))
+				.beerId(rs.getInt("beer_pk"))
 				.breweryId(rs.getInt("brewery_id"))
-				.name(rs.getString("name"))
-				.categoryId(Category.valueOf(rs.getString("category_id")))
-				.styleId(rs.getInt("style_id"))
+				.name(rs.getString("beer_name"))
+				.categoryId(Category.valueOf(rs.getString("category")))
 				.abv(rs.getDouble("abv"))
 				.ibu(rs.getInt("ibu"))
-				.flavorProfile(Flavor.valueOf(rs.getString("flavor_profile")))
+				.flavorProfile(rs.getString("flavor"))
 				.build();
 			// @formatter:on
 			}});

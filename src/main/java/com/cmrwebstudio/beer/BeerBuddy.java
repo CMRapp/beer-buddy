@@ -2,9 +2,10 @@ package com.cmrwebstudio.beer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import com.cmrwebstudio.ComponentScanMarker;
 
-@SpringBootApplication(scanBasePackageClasses = { ComponentScanMarker.class })
+@SpringBootApplication(scanBasePackageClasses = {ComponentScanMarker.class})
 
 public class BeerBuddy {
 
@@ -12,6 +13,8 @@ public class BeerBuddy {
 		SpringApplication.run(BeerBuddy.class, args);	
 		displaySplashScreen();
 	}
+
+	
 
 	static void displaySplashScreen() {
 		// @formatter:off
@@ -29,7 +32,6 @@ public class BeerBuddy {
 		System.out.println("*                                     *");
 		System.out.println("*        This one's for Dr Rob!       *");
 		System.out.println("*                                     *");
-		System.out.println("* app data provided by openbeerdb.com *");
 		System.out.println("***************************************");
 		// @formatter:on
 	}

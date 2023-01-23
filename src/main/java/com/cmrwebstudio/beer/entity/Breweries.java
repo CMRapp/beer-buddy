@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 
 public class Breweries {
 	private int breweryId;
+	private int beerPk;
 	private String breweryName;
 	private String country;
 	private String website;

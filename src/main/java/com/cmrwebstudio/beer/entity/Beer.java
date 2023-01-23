@@ -17,11 +17,10 @@ public class Beer implements Comparable<Beer> {
 	private int breweryId;	// foreign key
 	private String name;
 	private Category categoryId;
-	private int styleId;
 	private double abv;
 	private int ibu;
 	private String beerDesc;
-	private Flavor flavorProfile;
+	private String flavorProfile;
 	
 
 	@Override
