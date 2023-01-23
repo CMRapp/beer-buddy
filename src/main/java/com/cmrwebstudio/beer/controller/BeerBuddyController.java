@@ -2,12 +2,16 @@ package com.cmrwebstudio.beer.controller;
 
 import java.util.List;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Length;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.cmrwebstudio.beer.Constants;
 import com.cmrwebstudio.beer.entity.Beer;
 import com.cmrwebstudio.beer.entity.Category;
 
@@ -69,8 +73,12 @@ public interface BeerBuddyController {
 		
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
-	List<Beer> fetchBeers(@RequestParam(required = false) Category category,
-							@RequestParam(required = false) String flavor);
+	List<Beer> fetchBeers(
+			@RequestParam(required = false)
+				Category category,
+				@Length(max = Constants.TRIM_MAX_LENGTH)
+				@Pattern(regexp = "[\\w\\s]*")
+			@RequestParam(required = false) String flavor);
 	
 	// @formatter:on
 }

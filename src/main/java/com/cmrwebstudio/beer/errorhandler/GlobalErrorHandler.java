@@ -29,7 +29,7 @@ public class GlobalErrorHandler {
 		STACK_TRACE, MESSAGE_ONLY
 	}
 	
-	/**
+	 /**
 	 * 
 	 * @param e
 	 * @param webRequest
@@ -87,6 +87,8 @@ public class GlobalErrorHandler {
 	 * @param status
 	 * @param webRequest
 	 * @return
+	 * 
+	 * This method builds the exception message.
 	 */
 	private Map<String, Object> createExceptionMessage(Exception e, 
 			HttpStatus status, WebRequest webRequest, LogStatus logStatus) {
