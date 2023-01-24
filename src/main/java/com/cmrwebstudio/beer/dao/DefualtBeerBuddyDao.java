@@ -37,7 +37,7 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 			+ "WHERE category = :category";
 		// @formatter: on
 		
-			
+				
 		Map<String, Object> params = new HashMap<>();
 		params.put("category", category.toString());
 		
@@ -45,16 +45,6 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 
 		@Override
 		public Beer mapRow(ResultSet rs, int rowNum) throws SQLException {
-String categoryId = rs.getString("category");
-			
-			try {
-				Category.valueOf(categoryId);
-			}
-			catch(Exception e) {
-				e.printStackTrace();
-			}
-			
-			
 			// @formatter: off
 			return Beer.builder()
 				.beerId(rs.getInt("beer_pk"))
@@ -75,7 +65,7 @@ String categoryId = rs.getString("category");
 		log.debug("DAO: breweryId = {}", brewery_pk);
 		String sql;
 		
-		if(brewery_pk == 0) {
+		if(brewery_pk <= 0) {
 			// @formatter: off
 			sql = ""
 				+ "SELECT * "
@@ -140,4 +130,36 @@ String categoryId = rs.getString("category");
 				}});
 	}
 
+	@Override
+	public List<Beer> fetchBeerDetails(int beer_pk) {
+		log.debug("DAO: Beer Id = {} ", beer_pk);
+		// @formatter: off
+			String sql = ""
+			+ "SELECT * "
+			+ "FROM beers "
+			+ "WHERE beer_pk = :beer_pk";
+		// @formatter: on
+		
+				
+		Map<String, Object> params = new HashMap<>();
+		params.put("beer_pk", beer_pk);
+		
+		return jdbcTemplate.query(sql, params, new RowMapper<>() {
+
+		@Override
+		public Beer mapRow(ResultSet rs, int rowNum) throws SQLException {
+			// @formatter: off
+			return Beer.builder()
+				.beerId(rs.getInt("beer_pk"))
+				.breweryId(rs.getInt("brewery_id"))
+				.name(rs.getString("beer_name"))
+				.category(Category.valueOf(rs.getString("category")))
+				.abv(rs.getDouble("abv"))
+				.ibu(rs.getInt("ibu"))
+				.flavorProfile(rs.getString("flavor"))
+				.beerDesc(rs.getString("description"))
+				.build();
+			// @formatter:on
+			}});
+	}
 }

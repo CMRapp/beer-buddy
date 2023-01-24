@@ -20,6 +20,14 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.servers.Server;
 
+/** The BeerBuddyController interface formats the swagger/OpenAPI Documentation
+ *  The BeerBuddyController returns a list of beers by category from the database by calling the
+ *  fetchBeers method in the DAO (Data Access Object) layers.
+ *  
+ *  The RequestMapping annotation is used to inform Spring the following data will be mapped
+ *  to the URI listed
+ *  @author cmrap *
+ */
 
 @RequestMapping("/beers")
 

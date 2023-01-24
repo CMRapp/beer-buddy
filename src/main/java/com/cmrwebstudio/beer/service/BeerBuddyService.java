@@ -20,6 +20,8 @@ public interface BeerBuddyService {
 
 	List<Beer> fetchBeers(Category category);
 
-	List<CatDescription> fetchCategory(Category category);
+	List<CatDescription> fetchDescription(Category category);
+
+	List<Beer> fetchBeerDetails(int beerId);
 
 }

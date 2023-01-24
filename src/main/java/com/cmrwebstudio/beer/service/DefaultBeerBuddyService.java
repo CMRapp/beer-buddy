@@ -54,7 +54,7 @@ public class DefaultBeerBuddyService implements BeerBuddyService {
 	}
 
 	@Override
-	public List<CatDescription> fetchCategory(Category category) {
+	public List<CatDescription> fetchDescription(Category category) {
 		log.info("The fetchDescription method was called with desc = {}", category);
 		
 		List<CatDescription> description = beerBuddyDao.fetchDescription(category);
@@ -65,6 +65,20 @@ public class DefaultBeerBuddyService implements BeerBuddyService {
 		}
 		
 		return description;
+	}
+
+	@Override
+	public List<Beer> fetchBeerDetails(int beerId) {
+		log.info("The fetchDescription method was called with desc = {}", beerId);
+		
+		List<Beer> details = beerBuddyDao.fetchBeerDetails(beerId);
+		
+		if(details.isEmpty() ) {
+			String msg = String.format("No beers found  with ID = %s", beerId);
+			throw new NoSuchElementException(msg);
+		}
+		
+		return details;
 	}
 
 }

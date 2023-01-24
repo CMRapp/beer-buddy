@@ -16,6 +16,14 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
+/** The BreweryController interface formats the swagger/OpenAPI Documentation
+ *  The BreweryController returns a list of breweries from the database.
+ *  The option is available to view one brewery by ID or view ALL
+ *  
+ *  The RequestMapping annotation is used to inform Spring the following data will be mapped
+ *  to the URI listed
+ *  @author cmrap *
+ */
 @RequestMapping("/breweries")
 
 public interface BreweryController {

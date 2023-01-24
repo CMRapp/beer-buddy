@@ -7,6 +7,11 @@ import com.cmrwebstudio.beer.entity.Breweries;
 import com.cmrwebstudio.beer.entity.CatDescription;
 import com.cmrwebstudio.beer.entity.Category;
 
+/** The BeerBuddyDao interface calls the methods of the controllers.
+ *  
+ *  
+ *  @author cmrap *
+ */
 public interface BeerBuddyDao {
 
 	/**
@@ -20,6 +25,8 @@ public interface BeerBuddyDao {
 	List<Breweries> fetchBrewery(int breweryPk);
 	
 	List<CatDescription> fetchDescription(Category category);
+
+	List<Beer> fetchBeerDetails(int beerId);
 	
 
 }

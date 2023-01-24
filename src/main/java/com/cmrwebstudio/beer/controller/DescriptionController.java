@@ -17,6 +17,14 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
+/** The DescriptionController interface formats the swagger/OpenAPI Documentation
+ *  The DescriptionController returns category descriptions from the database
+ *  
+ *  The RequestMapping annotation is used to inform Spring the following data will be mapped
+ *  to the URI listed
+ *  @author cmrap *
+ */
+
 @RequestMapping("/cat_desc")
 
 public interface DescriptionController {

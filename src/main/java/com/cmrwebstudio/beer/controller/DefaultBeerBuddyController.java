@@ -11,6 +11,15 @@ import com.cmrwebstudio.beer.service.BeerBuddyService;
 
 import lombok.extern.slf4j.Slf4j;
 
+/** The DefaultBeerBuddy class implements the corresponding controller
+ *  It calls the controller and passes data to it for processing.
+ *  
+ *  The RestController annotation is used to indicate that this controller is used for REST requests
+ *  Lombok logging is enabled using the Slf4j annotation.
+ *  
+ *  @author cmrap *
+ */
+
 @RestController
 @Slf4j
 public class DefaultBeerBuddyController implements BeerBuddyController {
