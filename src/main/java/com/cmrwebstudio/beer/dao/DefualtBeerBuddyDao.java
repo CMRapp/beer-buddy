@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import com.cmrwebstudio.beer.entity.Beer;
 import com.cmrwebstudio.beer.entity.Breweries;
+import com.cmrwebstudio.beer.entity.CatDescription;
 import com.cmrwebstudio.beer.entity.Category;
 
 import lombok.extern.slf4j.Slf4j;
@@ -28,14 +29,15 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 	@Override
 	public List<Beer> fetchBeers(Category category) {
 		log.debug("DAO: category = {} ", category);
-		
 		// @formatter: off
+				
 		String sql = ""
 			+ "SELECT * "
 			+ "FROM beers "
 			+ "WHERE category = :category";
 		// @formatter: on
 		
+			
 		Map<String, Object> params = new HashMap<>();
 		params.put("category", category.toString());
 		
@@ -43,12 +45,22 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 
 		@Override
 		public Beer mapRow(ResultSet rs, int rowNum) throws SQLException {
+String categoryId = rs.getString("category");
+			
+			try {
+				Category.valueOf(categoryId);
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			
 			// @formatter: off
 			return Beer.builder()
 				.beerId(rs.getInt("beer_pk"))
 				.breweryId(rs.getInt("brewery_id"))
 				.name(rs.getString("beer_name"))
-				.categoryId(Category.valueOf(rs.getString("category")))
+				.category(Category.valueOf(rs.getString("category")))
 				.abv(rs.getDouble("abv"))
 				.ibu(rs.getInt("ibu"))
 				.flavorProfile(rs.getString("flavor"))
@@ -97,6 +109,35 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 				.build();
 			// @formatter:on
 			}});
+	}
+
+	@Override
+	public List<CatDescription> fetchDescription(Category category) {
+			log.debug("fetchDescription: category = {} ", category);
+			System.out.println(category);
+			// @formatter: off
+			String cat = "'"+category.toString()+"'";
+			String sql = ""
+				+ "SELECT * "
+				+ "FROM category "
+				+ "WHERE name = " + cat;
+			// @formatter: on
+			
+			Map<String, Object> params = new HashMap<>();
+			params.put("name", category.toString());
+			
+			return jdbcTemplate.query(sql, params, new RowMapper<>() {
+
+			@Override
+			public CatDescription mapRow(ResultSet rs, int rowNum) throws SQLException {
+				// @formatter: off
+				return CatDescription.builder()
+					.catId(rs.getInt("category_pk"))
+					.name(rs.getString("name"))
+					.desc(rs.getString("description"))
+					.build();
+				// @formatter:on
+				}});
 	}
 
 }

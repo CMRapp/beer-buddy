@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.cmrwebstudio.beer.dao.BeerBuddyDao;
 import com.cmrwebstudio.beer.entity.Beer;
 import com.cmrwebstudio.beer.entity.Breweries;
+import com.cmrwebstudio.beer.entity.CatDescription;
 import com.cmrwebstudio.beer.entity.Category;
 
 import lombok.extern.slf4j.Slf4j;
@@ -26,12 +27,12 @@ public class DefaultBeerBuddyService implements BeerBuddyService {
 	@Transactional(readOnly = true)
 	@Override
 	public List<Beer> fetchBeers(Category category) {
-		log.info("The fetchBeers method was called with category = {} and flavor = {}", category);
+		log.info("The fetchBeers method was called with category = {}", category);
 		
 		List<Beer> beers = beerBuddyDao.fetchBeers(category);
 		
 		if(beers.isEmpty() ) {
-			String msg = String.format("No beers found with category = %s and flavor = %s", category);
+			String msg = String.format("No beers found with category = %s", category);
 			throw new NoSuchElementException(msg);
 		}
 		Collections.sort(beers);
@@ -50,6 +51,20 @@ public class DefaultBeerBuddyService implements BeerBuddyService {
 		}
 		
 		return breweries;
+	}
+
+	@Override
+	public List<CatDescription> fetchCategory(Category category) {
+		log.info("The fetchDescription method was called with desc = {}", category);
+		
+		List<CatDescription> description = beerBuddyDao.fetchDescription(category);
+		
+		if(description.isEmpty() ) {
+			String msg = String.format("No descriptions found found with category = %s", category);
+			throw new NoSuchElementException(msg);
+		}
+		
+		return description;
 	}
 
 }

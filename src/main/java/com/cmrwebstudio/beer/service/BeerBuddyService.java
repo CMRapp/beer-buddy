@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.cmrwebstudio.beer.entity.Beer;
 import com.cmrwebstudio.beer.entity.Breweries;
+import com.cmrwebstudio.beer.entity.CatDescription;
 import com.cmrwebstudio.beer.entity.Category;
 
 public interface BeerBuddyService {
@@ -18,5 +19,7 @@ public interface BeerBuddyService {
 	List<Breweries> fetchBrewery(int brewery);
 
 	List<Beer> fetchBeers(Category category);
+
+	List<CatDescription> fetchCategory(Category category);
 
 }

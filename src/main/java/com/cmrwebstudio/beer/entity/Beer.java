@@ -16,7 +16,7 @@ public class Beer implements Comparable<Beer> {
 	private int beerId;		// primary key
 	private int breweryId;	// foreign key
 	private String name;
-	private Category categoryId;
+	private Category category;
 	private double abv;
 	private int ibu;
 	private String beerDesc;

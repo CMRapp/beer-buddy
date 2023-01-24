@@ -22,7 +22,7 @@ public class FetchBeerTestSupport extends BaseTest {
 					.beerId(4)
 					.breweryId(3)
 					.name("Samuel Adams Boston Lager")
-					.categoryId(Category.LAGER)
+					.category(Category.LAGER)
 					.abv(5.0)
 					.ibu(30)
 					.flavorProfile("Hoppy")
