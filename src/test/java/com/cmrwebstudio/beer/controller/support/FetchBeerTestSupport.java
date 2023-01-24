@@ -33,14 +33,19 @@ public class FetchBeerTestSupport extends BaseTest {
 	return list;
 	}
 	
+	/**
+	 * 
+	 * @param error
+	 * @param status
+	 */
 	protected void assertErrorMessageValid(Map<String, Object> error, HttpStatus status) {
-		// @formatter: on
-		assertThat(error)
-			.containsKey("message")
-			.containsEntry("status code", status.value())
-			.containsEntry("uri", "/beers")
-			.containsKey("timestamp")
-			.containsEntry("reason", status.getReasonPhrase());
 		// @formatter:off
+			assertThat(error)
+				.containsKey("message")
+				.containsEntry("status code", status.value())
+				.containsEntry("uri", "/beers")
+				.containsKey("timestamp")
+				.containsEntry("reason", status.getReasonPhrase());
+			// @formatter:on
 	}
 }

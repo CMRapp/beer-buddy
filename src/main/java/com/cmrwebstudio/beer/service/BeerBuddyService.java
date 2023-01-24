@@ -3,6 +3,7 @@ package com.cmrwebstudio.beer.service;
 import java.util.List;
 
 import com.cmrwebstudio.beer.entity.Beer;
+import com.cmrwebstudio.beer.entity.Breweries;
 import com.cmrwebstudio.beer.entity.Category;
 
 public interface BeerBuddyService {
@@ -14,6 +15,8 @@ public interface BeerBuddyService {
 	 * @return
 	 */
 	
-	List<Beer> fetchBeers(Category category, String flavor);
+	List<Breweries> fetchBrewery(int brewery);
+
+	List<Beer> fetchBeers(Category category);
 
 }

@@ -2,16 +2,12 @@ package com.cmrwebstudio.beer.controller;
 
 import java.util.List;
 
-import javax.validation.constraints.Pattern;
-
-import org.hibernate.validator.constraints.Length;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.cmrwebstudio.beer.Constants;
 import com.cmrwebstudio.beer.entity.Beer;
 import com.cmrwebstudio.beer.entity.Category;
 
@@ -28,8 +24,8 @@ import io.swagger.v3.oas.annotations.servers.Server;
 @RequestMapping("/beers")
 
 // configure swagger OpenAPI for testing 
-@OpenAPIDefinition(info = @Info(title = "Beer Buddy World Beer Listing"), servers = {
-		@Server(url = "htp://localhost:8080", description = "Local server.")})
+@OpenAPIDefinition(info = @Info(title = "Beer Buddy World Beer Guide"), servers = {
+		@Server(url = "http://localhost:8080", description = "Local server.")})
 
 
 // This interface configures the swagger OpenAPI documentation
@@ -37,7 +33,7 @@ public interface BeerBuddyController {
 	// @formatter: off
 	@Operation(
 		summary = "Returns a list of beers given a beer category",
-		description = "Returns a list of beers given a beer category and/or flavor profile",
+		description = "Returns a list of beers given a beer category",
 		responses = {
 				@ApiResponse(
 						responseCode = "200", 
@@ -61,24 +57,16 @@ public interface BeerBuddyController {
 						@Parameter(
 							name = "category", 
 							allowEmptyValue = false, 
-							required = false, 
-							description = "Select Beer Category"),
-						@Parameter(
-							name = "flavor", 
-							allowEmptyValue = false, 
-							required = false, 
-							description = "Enter Flavor Profile (ie:'Hoppy'")
+							required = true, 
+							description = "Select Beer Category")
 		}
 	)
 		
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
 	List<Beer> fetchBeers(
-			@RequestParam(required = false)
-				Category category,
-				@Length(max = Constants.TRIM_MAX_LENGTH)
-				@Pattern(regexp = "[\\w\\s]*")
-			@RequestParam(required = false) String flavor);
+			@RequestParam(required = false)	Category category);
 	
 	// @formatter:on
+	
 }

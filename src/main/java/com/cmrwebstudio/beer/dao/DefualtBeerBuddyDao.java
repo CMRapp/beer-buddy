@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.cmrwebstudio.beer.entity.Beer;
+import com.cmrwebstudio.beer.entity.Breweries;
 import com.cmrwebstudio.beer.entity.Category;
 
 import lombok.extern.slf4j.Slf4j;
@@ -25,19 +26,18 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 	
 	
 	@Override
-	public List<Beer> fetchBeers(Category category, String flavor) {
-		log.debug("DAO: category = {} and flavor = {}", category, flavor);
+	public List<Beer> fetchBeers(Category category) {
+		log.debug("DAO: category = {} ", category);
 		
 		// @formatter: off
 		String sql = ""
 			+ "SELECT * "
 			+ "FROM beers "
-			+ "WHERE category = :category AND flavor = :flavor";
+			+ "WHERE category = :category";
 		// @formatter: on
 		
 		Map<String, Object> params = new HashMap<>();
 		params.put("category", category.toString());
-		params.put("flavor", flavor);
 		
 		return jdbcTemplate.query(sql, params, new RowMapper<>() {
 
@@ -52,6 +52,48 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 				.abv(rs.getDouble("abv"))
 				.ibu(rs.getInt("ibu"))
 				.flavorProfile(rs.getString("flavor"))
+				.beerDesc(rs.getString("description"))
+				.build();
+			// @formatter:on
+			}});
+	}
+	
+	@Override
+	public List<Breweries> fetchBrewery(int brewery_pk) {
+		log.debug("DAO: breweryId = {}", brewery_pk);
+		String sql;
+		
+		if(brewery_pk == 0) {
+			// @formatter: off
+			sql = ""
+				+ "SELECT * "
+				+ "FROM brewery "
+				+ "WHERE brewery_pk = brewery_pk"; 	//removing : causes all to display
+			// @formatter: on
+		
+		} else {
+			// @formatter: off
+			sql = ""
+				+ "SELECT * "
+				+ "FROM brewery "
+				+ "WHERE brewery_pk = :brewery_pk";
+			// @formatter: on
+		}
+		
+		
+		Map<String, Object> params = new HashMap<>();
+		params.put("brewery_pk", brewery_pk);
+		
+		return jdbcTemplate.query(sql, params, new RowMapper<>() {
+
+		@Override
+		public Breweries mapRow(ResultSet rs, int rowNum) throws SQLException {
+			// @formatter: off
+			return Breweries.builder()
+				.breweryId(rs.getInt("brewery_pk"))
+				.breweryName(rs.getString("name"))
+				.country(rs.getString("country"))
+				.website(rs.getString("website"))
 				.build();
 			// @formatter:on
 			}});

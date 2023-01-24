@@ -5,25 +5,22 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cmrwebstudio.beer.entity.Beer;
-import com.cmrwebstudio.beer.entity.Category;
+import com.cmrwebstudio.beer.entity.Breweries;
 import com.cmrwebstudio.beer.service.BeerBuddyService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Slf4j
-public class DefaultBeerBuddyController implements BeerBuddyController {
+
+public class DefaultBreweryController implements BreweryController {
 
 	@Autowired
 	private BeerBuddyService beerBuddyService;
 	
-	
 	@Override
-	public List<Beer> fetchBeers(Category category) {
-		log.debug("Retreiving beers with category = {} and flavor = {}", category);
-		return beerBuddyService.fetchBeers(category);
-		
+	public List<Breweries> fetchBrewery(int brewery) {
+		log.debug("Retreiving brewery with id = {} ", brewery);
+		return beerBuddyService.fetchBrewery(brewery);
 	}
-
 }
