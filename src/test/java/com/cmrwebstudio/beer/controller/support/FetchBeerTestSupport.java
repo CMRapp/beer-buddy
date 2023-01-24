@@ -19,16 +19,20 @@ public class FetchBeerTestSupport extends BaseTest {
 		
 		// @formatter:off
 			list.add(Beer.builder()
-					.beerId(4)
-					.breweryId(3)
-					.name("Samuel Adams Boston Lager")
-					.category(Category.LAGER)
-					.abv(5.0)
-					.ibu(30)
-					.flavorProfile("Hoppy")
+					.beerId(3)
+					.breweryId(4)
+					.name("St-Ambroise Baltic Porter")
+					.category(Category.PORTER)
+					.abv(8.2)
+					.ibu(38)
+					.flavorProfile("Smooth")
+					.beerDesc("St-Ambroise Baltic Porter combines what is best of the British-style"
+							+ " porters and the sweeter Russian Imperial Stouts brewed in countries on the Baltic Sea."
+							+ " This smooth, full-bodied tribute to those beers has a rich malt flavour with "
+							+ "concentrated caramel highlights along with notes of chocolate, liquorce and dark fruit.")
 					.build());
 		// @formatter:on
-		
+			
 	Collections.sort(list);		
 	return list;
 	}
