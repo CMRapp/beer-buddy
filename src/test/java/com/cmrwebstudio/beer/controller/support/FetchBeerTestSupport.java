@@ -25,7 +25,6 @@ public class FetchBeerTestSupport extends BaseTest {
 					.category(Category.PORTER)
 					.abv(8.2)
 					.ibu(38)
-					.flavorProfile("Smooth")
 					.beerDesc("St-Ambroise Baltic Porter combines what is best of the British-style"
 							+ " porters and the sweeter Russian Imperial Stouts brewed in countries on the Baltic Sea."
 							+ " This smooth, full-bodied tribute to those beers has a rich malt flavour with "

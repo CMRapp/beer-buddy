@@ -20,7 +20,6 @@ public class Beer implements Comparable<Beer> {
 	private double abv;
 	private int ibu;
 	private String beerDesc;
-	private String flavorProfile;
 	
 
 	@Override

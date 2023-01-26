@@ -20,7 +20,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.servers.Server;
 
-/** The BeerBuddyController interface formats the swagger/OpenAPI Documentation
+/** The BeerCategoryController interface formats the swagger/OpenAPI Documentation
  *  The BeerBuddyController returns a list of beers by category from the database by calling the
  *  fetchBeers method in the DAO (Data Access Object) layers.
  *  
@@ -37,7 +37,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
 
 
 // This interface configures the swagger OpenAPI documentation
-public interface BeerBuddyController {
+public interface BeerCategoryController {
 	// @formatter: off
 	@Operation(
 		summary = "Returns a list of beers given a beer category",

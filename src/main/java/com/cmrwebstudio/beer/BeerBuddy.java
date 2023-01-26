@@ -52,21 +52,24 @@ public class BeerBuddy {
 
 	static void displaySplashScreen() {
 		// @formatter:off
-		System.out.println("***************************************");
-		System.out.println("*                                     *");
-		System.out.println("*    BBBBB   EEEEE   EEEEE   RRRRR    *");
-		System.out.println("*    BB  B   EE      EE      R   R    *");
-		System.out.println("*    BBBB    EEEE    EEEE    RRRR     *");
-		System.out.println("*    BB  B   EE      EE      RR  R    *");
-		System.out.println("*    BBBBB   EEEEE   EEEE    RR  R    *");
-		System.out.println("*                                     *");
-		System.out.println("*            B  U  D  D  Y            *");
-		System.out.println("*                                     *");
-		System.out.println("*           by cmrwebstudio           *");
-		System.out.println("*                                     *");
-		System.out.println("*        This one's for Dr Rob!       *");
-		System.out.println("*                                     *");
-		System.out.println("***************************************");
+		System.out.println("*****************************************************************");
+		System.out.println("*                                                               *");
+		System.out.println("*                 BBBBB   EEEEE   EEEEE   RRRRR                 *");
+		System.out.println("*                 BB  B   EE      EE      R   R                 *");
+		System.out.println("*                 BBBB    EEEE    EEEE    RRRR                  *");
+		System.out.println("*                 BB  B   EE      EE      RR  R                 *");
+		System.out.println("*                 BBBBB   EEEEE   EEEE    RR  R                 *");
+		System.out.println("*                                                               *");
+		System.out.println("*                         B  U  D  D  Y                         *");
+		System.out.println("*                                                               *");
+		System.out.println("*                        by cmrwebstudio                        *");
+		System.out.println("*                                                               *");
+		System.out.println("*                     This one's for Dr Rob!                    *");
+		System.out.println("*                                                               *");
+		System.out.println("*  'Beer is proof that God loves us and wants us to be happy.'  *");
+		System.out.println("*                    - Benjamin Franklin                        *");
+		System.out.println("*                                                               *");
+		System.out.println("*****************************************************************");
 		// @formatter:on
 	}
 	

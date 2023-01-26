@@ -13,6 +13,7 @@ import com.cmrwebstudio.beer.entity.Beer;
 import com.cmrwebstudio.beer.entity.Breweries;
 import com.cmrwebstudio.beer.entity.CatDescription;
 import com.cmrwebstudio.beer.entity.Category;
+import com.cmrwebstudio.beer.entity.Reviews;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -39,6 +40,7 @@ public class DefaultBeerBuddyService implements BeerBuddyService {
 		return beers;
 	}
 
+	@Transactional(readOnly = true)
 	@Override
 	public List<Breweries> fetchBrewery(int brewery) {
 		log.info("The fetchBrewery method was called with id = {}", brewery);
@@ -53,6 +55,7 @@ public class DefaultBeerBuddyService implements BeerBuddyService {
 		return breweries;
 	}
 
+	@Transactional(readOnly = true)
 	@Override
 	public List<CatDescription> fetchDescription(Category category) {
 		log.info("The fetchDescription method was called with desc = {}", category);
@@ -67,6 +70,7 @@ public class DefaultBeerBuddyService implements BeerBuddyService {
 		return description;
 	}
 
+	@Transactional(readOnly = true)
 	@Override
 	public List<Beer> fetchBeerDetails(int beerId) {
 		log.info("The fetchDescription method was called with desc = {}", beerId);
@@ -81,4 +85,17 @@ public class DefaultBeerBuddyService implements BeerBuddyService {
 		return details;
 	}
 
+	@Transactional(readOnly = true)
+	@Override
+	public List<Reviews> fetchReviews(int beerId) {
+			log.info("The fetchReviews method was called with beerID = {}", beerId);
+			
+			List<Reviews> reviews = beerBuddyDao.fetchReviews(beerId);
+			
+			if(reviews.isEmpty() ) {
+				String msg = String.format("No reviews found with beerId = %s", beerId);
+				throw new NoSuchElementException(msg);
+			}
+			return reviews;
+	}
 }

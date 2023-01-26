@@ -15,6 +15,7 @@ import com.cmrwebstudio.beer.entity.Beer;
 import com.cmrwebstudio.beer.entity.Breweries;
 import com.cmrwebstudio.beer.entity.CatDescription;
 import com.cmrwebstudio.beer.entity.Category;
+import com.cmrwebstudio.beer.entity.Reviews;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -53,7 +54,6 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 				.category(Category.valueOf(rs.getString("category")))
 				.abv(rs.getDouble("abv"))
 				.ibu(rs.getInt("ibu"))
-				.flavorProfile(rs.getString("flavor"))
 				.beerDesc(rs.getString("description"))
 				.build();
 			// @formatter:on
@@ -156,8 +156,38 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 				.category(Category.valueOf(rs.getString("category")))
 				.abv(rs.getDouble("abv"))
 				.ibu(rs.getInt("ibu"))
-				.flavorProfile(rs.getString("flavor"))
 				.beerDesc(rs.getString("description"))
+				.build();
+			// @formatter:on
+			}});
+	}
+
+	@Override
+	public List<Reviews> fetchReviews(int beer_pk) {
+		log.debug("DAO: Beer Id = {} ", beer_pk);
+		// @formatter: off
+			String sql = ""
+			+ "SELECT * "
+			+ "FROM reviews "
+			+ "RIGHT JOIN beer_reviews on reviews.beer_pk = beer_reviews.beer_pk "
+			+ "WHERE beer_reviews.beer_pk = :beer_pk "
+			+ "GROUP BY reviews.review ";
+		// @formatter: on
+		
+				
+		Map<String, Object> params = new HashMap<>();
+		params.put("beer_pk", beer_pk);
+		
+		return jdbcTemplate.query(sql, params, new RowMapper<>() {
+
+		@Override
+		public Reviews mapRow(ResultSet rs, int rowNum) throws SQLException {
+			// @formatter: off
+			return Reviews.builder()
+				.reviewPK(rs.getInt("review_pk"))
+				.beerId(rs.getInt("beer_pk"))
+				.name(rs.getString("name"))
+				.review(rs.getString("review"))
 				.build();
 			// @formatter:on
 			}});
