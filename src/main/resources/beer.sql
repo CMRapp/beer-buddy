@@ -33,8 +33,9 @@ PRIMARY KEY (category_pk)
 DROP TABLE IF EXISTS reviews;
 CREATE TABLE reviews(
 review_pk INT AUTO_INCREMENT NOT NULL,
-beer_id INT NOT NULL,
-name VARCHAR(35) NOT NULL,
+beer_pk INT NOT NULL,
+reviewer_name VARCHAR(35) NOT NULL,
+rating INT NOT NULL,
 review MEDIUMTEXT,
 PRIMARY KEY (review_pk)
 );
@@ -136,9 +137,36 @@ INSERT INTO beers (beer_name, brewery_id, category, abv, ibu, description) VALUE
 
 INSERT INTO beers (beer_name, brewery_id, category, abv, ibu, description) VALUES ('Gateway Gold Blonde Ale', 2, 'BLONDE_ALE', 4.1, 0, 'Smooth and light bodied with a sweetness from the brewing with honey malt. This honey blonde ale is a perfect gateway into craft beer drinking.');
 INSERT INTO beers (beer_name, brewery_id, category, abv, ibu, description) VALUES ('High 5 IPA', 2, 'INDIA_PALE_ALE', 5.9, 59, 'Brewed and dry hopped beer with Citra and Centennial hops to create piney, citrusy aromas and flavors bursting out of every pint.' );
-INSERT INTO beers (beer_name, brewery_id, category, abv, ibu, description) VALUES ('Fort Myers Wheat', 2, 'WHEAT', 5.0, 0, 'Fort Myers American Wheat brings the Florida sunshine to the glass. This award winning beer boasts a light and crisp body with refreshing hints of Florida citrus flavors on the finish.');
+INSERT INTO beers (beer_name, brewery_id, category, abv, ibu, description) VALUES ('Fort Myers American Wheat', 2, 'WHEAT', 5.0, 0, 'Fort Myers American Wheat brings the Florida sunshine to the glass. This award winning beer boasts a light and crisp body with refreshing hints of Florida citrus flavors on the finish.');
 INSERT INTO beers (beer_name, brewery_id, category, abv, ibu, description) VALUES ('Get Lei''d', 2, 'ALE', 4.1, 0, 'Our summertime pineapple infused ale is the perfect refresher for the dog days of summer that happen to be most days in Southwest Florida.');
 
 INSERT INTO beers (beer_name, brewery_id, category, abv, ibu, description) VALUES ('O! Gold Light Lager', 1, 'LAGER', 3.8, 4, 'A light, dry, clean and balanced AMerican Light Lager');
 INSERT INTO beers (beer_name, brewery_id, category, abv, ibu, description) VALUES ('Firehouse Red Lager', 1, 'LAGER', 4.5, 10, 'Medium-Light Body, Malty yet Crisp with Notes of Caramel and Toffee');
-INSERT INTO beers (beer_name, brewery_id, category, abv, ibu, description) VALUES ('Capitol Pale Ale', 1, 'PALE_ALE', 5.0, 25, 'Light Body, Bright Hops, Citrus, Pine, Earthy, Reserved Malt, Balanced Finish. Brewed with Nebraska Grown Cascade, Chinook, Centennial, and Comet Hops');
+INSERT INTO beers (beer_name, brewery_id, category, abv, ibu, description) VALUES ('Upstream Capitol Pale Ale', 1, 'PALE_ALE', 5.0, 25, 'Light Body, Bright Hops, Citrus, Pine, Earthy, Reserved Malt, Balanced Finish. Brewed with Nebraska Grown Cascade, Chinook, Centennial, and Comet Hops');
+
+/* Reviews */
+/* Capitol Pale Ale */
+INSERT INTO reviews (beer_id, name, rating, review) VALUES (14, 'ads135', 4, 'An earthy, grassy pale ale. Light and crisp. Medium bodied with little citrus aftertaste.');
+INSERT INTO reviews (beer_id, name, rating, review) VALUES (14, 'AirForceHops', 4, 'Draft @ Old Market location. Slightly hazy glad. Aroma is citrus / mostly grapefruit with some mild lemon. Body is lighter side of medium. Pale grain body with a slightly / mild bitter finish. Respectable.');
+INSERT INTO reviews (beer_id, name, rating, review) VALUES (14, 'Niko100', 5, 'Tap; Nice amber/gold color; Medium slight creamy body; Aroma of floral hops, hay/grain, & some citrus; Flavor of malt/biscuit, pine hops, some floral, and citrus; Finish is dry & fairly bitter; Not too bad.');
+
+/*Ft Myers High 5 IPA */
+INSERT INTO reviews (beer_id, name, rating, review) VALUES (9, 'johnnnniee', 3, 'On tap at the Yucatan Waterfront Matlacha, FL Mostly clear deep gold in color with a bubbly white head that persists. Sweet bready maltiness offset with grassy earthy citrus hops. Decent. ');
+INSERT INTO reviews (beer_id, name, rating, review) VALUES (9, 'jw0406', 5, '12 oz can pours a golden color with a small white head. Aromas of citrus, pine, floral. Medium bodied, a very nice beaxh beer.');
+INSERT INTO reviews (beer_id, name, rating, review) VALUES (9, 'Kleg', 3, '12 oz. can. Thanks Bob! Pours a cloudy gold color with a white head and very good retention. Great lacing. As expected, aroma of citrus and hops. Strong hoppy flavor with a biting dry finish and barely enough citrus to cut the bitterness. Medium body and good carbonation. Okay.');
+
+/*Baltic Porter*/
+INSERT INTO reviews (beer_id, name, rating, review) VALUES (3, 'Strangebrewer', 3, 'Poured deep brown with a creamy tan head. Roasty malt aroma with a licorice note. Full bodied, tight carbonation with a slick mouthfeel. Flavours of heavily roasted malt, slightly burnt but sweet, notes of molasses, raisin, coffee, cocoa, a bit tart.');
+INSERT INTO reviews (beer_id, name, rating, review) VALUES (3, 'Tessic', 5, 'This porter poured a deep black colour with a creamy, tan coloured head. Nice lacing. Scents include wine, alcohol and light malt. First swig was really good and boozey. Thicker mouthfeel with a flavour burst at first. Flavours of ripe fruit, molasses, alcohol and sweet malt. Finish is medium thick sweet with just malty goodness lingering.');
+INSERT INTO reviews (beer_id, name, rating, review) VALUES (3, 'Raistlin', 4, 'Pours black with tan head that stays and leaves bit of lacing behind. Aroma of fermented fruit. Taste of dark fruit with dark chocolate finish. Hides alcohol well. Soft carbonation with medium to heavy body.');
+
+/*beer_reviews (JOIN TABLE) */
+INSERT INTO beer_reviews (review_pk, beer_pk) VALUES (1,14);
+INSERT INTO beer_reviews (review_pk, beer_pk) VALUES (2,14);
+INSERT INTO beer_reviews (review_pk, beer_pk) VALUES (3, 14);
+INSERT INTO beer_reviews (review_pk, beer_pk) VALUES (4,9);
+INSERT INTO beer_reviews (review_pk, beer_pk) VALUES (5,9);
+INSERT INTO beer_reviews (review_pk, beer_pk) VALUES (6,9);
+INSERT INTO beer_reviews (review_pk, beer_pk) VALUES (7,3);
+INSERT INTO beer_reviews (review_pk, beer_pk) VALUES (8,3);
+INSERT INTO beer_reviews (review_pk, beer_pk) VALUES (9,3);
