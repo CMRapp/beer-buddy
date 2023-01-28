@@ -50,7 +50,7 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 			return Beer.builder()
 				.beerId(rs.getInt("beer_pk"))
 				.breweryId(rs.getInt("brewery_id"))
-				.name(rs.getString("beer_name"))
+				.beerName(rs.getString("beer_name"))
 				.category(Category.valueOf(rs.getString("category")))
 				.abv(rs.getDouble("abv"))
 				.ibu(rs.getInt("ibu"))
@@ -123,8 +123,8 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 				// @formatter: off
 				return CatDescription.builder()
 					.catId(rs.getInt("category_pk"))
-					.name(rs.getString("name"))
-					.desc(rs.getString("description"))
+					.catName(rs.getString("name"))
+					.catDesc(rs.getString("description"))
 					.build();
 				// @formatter:on
 				}});
@@ -152,7 +152,7 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 			return Beer.builder()
 				.beerId(rs.getInt("beer_pk"))
 				.breweryId(rs.getInt("brewery_id"))
-				.name(rs.getString("beer_name"))
+				.beerName(rs.getString("beer_name"))
 				.category(Category.valueOf(rs.getString("category")))
 				.abv(rs.getDouble("abv"))
 				.ibu(rs.getInt("ibu"))
@@ -169,7 +169,8 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 			String sql = ""
 			+ "SELECT * "
 			+ "FROM reviews "
-			+ "RIGHT JOIN beer_reviews on reviews.beer_pk = beer_reviews.beer_pk "
+			+ "RIGHT JOIN beer_reviews " 
+			+ "ON reviews.beer_pk = beer_reviews.beer_pk "
 			+ "WHERE beer_reviews.beer_pk = :beer_pk "
 			+ "GROUP BY reviews.review ";
 		// @formatter: on
@@ -186,7 +187,8 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 			return Reviews.builder()
 				.reviewPK(rs.getInt("review_pk"))
 				.beerId(rs.getInt("beer_pk"))
-				.name(rs.getString("name"))
+				.reviewerName(rs.getString("reviewer_name"))
+				.rating(rs.getInt("rating"))
 				.review(rs.getString("review"))
 				.build();
 			// @formatter:on

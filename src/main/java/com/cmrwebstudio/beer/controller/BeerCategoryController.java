@@ -41,7 +41,7 @@ public interface BeerCategoryController {
 	// @formatter: off
 	@Operation(
 		summary = "Returns a list of beers given a beer category",
-		description = "Returns a list of beers given a beer category",
+		description = "Returns all beers in database given a beer category",
 		responses = {
 				@ApiResponse(
 						responseCode = "200", 

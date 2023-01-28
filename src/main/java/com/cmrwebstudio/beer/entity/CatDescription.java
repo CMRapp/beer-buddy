@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 
 public class CatDescription {
 	int catId;
-	String name;
-	String desc;
+	String catName;
+	String catDesc;
 }

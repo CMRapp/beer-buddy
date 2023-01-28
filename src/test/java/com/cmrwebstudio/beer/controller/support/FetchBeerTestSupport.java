@@ -21,7 +21,7 @@ public class FetchBeerTestSupport extends BaseTest {
 			list.add(Beer.builder()
 					.beerId(3)
 					.breweryId(4)
-					.name("St-Ambroise Baltic Porter")
+					.beerName("St-Ambroise Baltic Porter")
 					.category(Category.PORTER)
 					.abv(8.2)
 					.ibu(38)
