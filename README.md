@@ -1,13 +1,23 @@
 # Beer Buddy
-Repository for the Promineo Tech Beck End Developer FInal Project. Project allows users to browse beers in a database provided by openbeerdb.com. Users will be able to perform CRUD (Create Read Update Delete) operations on the objects in the database. 
+Repository for the Promineo Tech Beck End Developer FInal Project. Project is a Spring Boot REST service that allows users to browse beers in a database. Database contains beers of different styles or categories from different breweries as well as reviews from people that have tried the beers.
 
-Users can:
-- Browse all beers
-- Search for a beer by ID
-- Edit beer information
-- Delete a beer, brewery, style or category
+The service will allow users to:
+
+GET functions:
+- Browse all beers in the database.
+- Search for a beer by ID and view the brewery name, category/style of beer, brewer's description, abv percentage and ibu rating. 
+- View user reviews of a beer, including a short descriptioon and rating.
+- View brewery information from a beer (Brewery Name, Location and website information)
+- View descritions of a category or style of beer (Pilsner, Ale, Stout, etc)
+
+POST function:
+- Allow user yo post a review on a beer
+
+PUT function
+- Allow user to update a review of a beer.
 
 Future planned features include:
+- Allow user to completely add a beer
 - Allowing user to sort by IBU & ABV
 - Display of complete brewery information, including address and phone
 - Create a favorites / shopping list
