@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.cmrwebstudio.beer.entity.ReviewRequest;
-import com.cmrwebstudio.beer.entity.Reviews;
+import com.cmrwebstudio.beer.entity.Review;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
@@ -39,7 +39,7 @@ public interface ReviewRequestController {
 						responseCode = "201", 
 						description = "The created review is returned.", 
 						content = @Content(mediaType = "application/json", 
-						schema = @Schema(implementation = Reviews.class))),
+						schema = @Schema(implementation = Review.class))),
 					@ApiResponse(
 						responseCode = "400", 
 						description = "The request parameters are invalid.", 
@@ -63,7 +63,7 @@ public interface ReviewRequestController {
 		
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	Reviews createReview(@Valid @RequestBody ReviewRequest reviewRequest);
+	Review createReview(@Valid @RequestBody ReviewRequest reviewRequest);
 	
 	// @formatter:on
 

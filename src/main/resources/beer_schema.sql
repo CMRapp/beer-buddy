@@ -34,10 +34,12 @@ DROP TABLE IF EXISTS reviews;
 CREATE TABLE reviews(
 review_pk INT AUTO_INCREMENT NOT NULL,
 beer_pk INT NOT NULL,
+beer_name VARCHAR(35) NOT NULL,
 reviewer_name VARCHAR(35) NOT NULL,
 rating INT NOT NULL,
 review MEDIUMTEXT,
-PRIMARY KEY (review_pk)
+PRIMARY KEY (review_pk),
+FOREIGN KEY (beer_pk) REFERENCES beers (beer_pk) ON DELETE CASCADE
 );
 
 
@@ -146,19 +148,19 @@ INSERT INTO beers (beer_name, brewery_id, category, abv, ibu, description) VALUE
 
 /* Reviews */
 /* Capitol Pale Ale */
-INSERT INTO reviews (beer_id, name, rating, review) VALUES (14, 'ads135', 4, 'An earthy, grassy pale ale. Light and crisp. Medium bodied with little citrus aftertaste.');
-INSERT INTO reviews (beer_id, name, rating, review) VALUES (14, 'AirForceHops', 4, 'Draft @ Old Market location. Slightly hazy glad. Aroma is citrus / mostly grapefruit with some mild lemon. Body is lighter side of medium. Pale grain body with a slightly / mild bitter finish. Respectable.');
-INSERT INTO reviews (beer_id, name, rating, review) VALUES (14, 'Niko100', 5, 'Tap; Nice amber/gold color; Medium slight creamy body; Aroma of floral hops, hay/grain, & some citrus; Flavor of malt/biscuit, pine hops, some floral, and citrus; Finish is dry & fairly bitter; Not too bad.');
+INSERT INTO reviews (beer_pk, beer_name, reviewer_name, rating, review) VALUES (14, 'Upstream Capitol Pale Ale', 'ads135', 4, 'An earthy, grassy pale ale. Light and crisp. Medium bodied with little citrus aftertaste.');
+INSERT INTO reviews (beer_pk, beer_name, reviewer_name, rating, review) VALUES (14, 'Upstream Capitol Pale Ale', 'AirForceHops', 4, 'Draft @ Old Market location. Slightly hazy glad. Aroma is citrus / mostly grapefruit with some mild lemon. Body is lighter side of medium. Pale grain body with a slightly / mild bitter finish. Respectable.');
+INSERT INTO reviews (beer_pk, beer_name, reviewer_name, rating, review) VALUES (14, 'Upstream Capitol Pale Ale', 'Niko100', 5, 'Tap; Nice amber/gold color; Medium slight creamy body; Aroma of floral hops, hay/grain, & some citrus; Flavor of malt/biscuit, pine hops, some floral, and citrus; Finish is dry & fairly bitter; Not too bad.');
 
 /*Ft Myers High 5 IPA */
-INSERT INTO reviews (beer_id, name, rating, review) VALUES (9, 'johnnnniee', 3, 'On tap at the Yucatan Waterfront Matlacha, FL Mostly clear deep gold in color with a bubbly white head that persists. Sweet bready maltiness offset with grassy earthy citrus hops. Decent. ');
-INSERT INTO reviews (beer_id, name, rating, review) VALUES (9, 'jw0406', 5, '12 oz can pours a golden color with a small white head. Aromas of citrus, pine, floral. Medium bodied, a very nice beaxh beer.');
-INSERT INTO reviews (beer_id, name, rating, review) VALUES (9, 'Kleg', 3, '12 oz. can. Thanks Bob! Pours a cloudy gold color with a white head and very good retention. Great lacing. As expected, aroma of citrus and hops. Strong hoppy flavor with a biting dry finish and barely enough citrus to cut the bitterness. Medium body and good carbonation. Okay.');
+INSERT INTO reviews (beer_pk, beer_name, reviewer_name, rating, review) VALUES (9, 'High 5 IPA', 'johnnnniee', 3, 'On tap at the Yucatan Waterfront Matlacha, FL Mostly clear deep gold in color with a bubbly white head that persists. Sweet bready maltiness offset with grassy earthy citrus hops. Decent. ');
+INSERT INTO reviews (beer_pk, beer_name, reviewer_name, rating, review) VALUES (9, 'High 5 IPA', 'jw0406', 5, '12 oz can pours a golden color with a small white head. Aromas of citrus, pine, floral. Medium bodied, a very nice beaxh beer.');
+INSERT INTO reviews (beer_pk, beer_name, reviewer_name, rating, review) VALUES (9, 'High 5 IPA', 'Kleg', 3, '12 oz. can. Thanks Bob! Pours a cloudy gold color with a white head and very good retention. Great lacing. As expected, aroma of citrus and hops. Strong hoppy flavor with a biting dry finish and barely enough citrus to cut the bitterness. Medium body and good carbonation. Okay.');
 
 /*Baltic Porter*/
-INSERT INTO reviews (beer_id, name, rating, review) VALUES (3, 'Strangebrewer', 3, 'Poured deep brown with a creamy tan head. Roasty malt aroma with a licorice note. Full bodied, tight carbonation with a slick mouthfeel. Flavours of heavily roasted malt, slightly burnt but sweet, notes of molasses, raisin, coffee, cocoa, a bit tart.');
-INSERT INTO reviews (beer_id, name, rating, review) VALUES (3, 'Tessic', 5, 'This porter poured a deep black colour with a creamy, tan coloured head. Nice lacing. Scents include wine, alcohol and light malt. First swig was really good and boozey. Thicker mouthfeel with a flavour burst at first. Flavours of ripe fruit, molasses, alcohol and sweet malt. Finish is medium thick sweet with just malty goodness lingering.');
-INSERT INTO reviews (beer_id, name, rating, review) VALUES (3, 'Raistlin', 4, 'Pours black with tan head that stays and leaves bit of lacing behind. Aroma of fermented fruit. Taste of dark fruit with dark chocolate finish. Hides alcohol well. Soft carbonation with medium to heavy body.');
+INSERT INTO reviews (beer_pk, beer_name, reviewer_name, rating, review) VALUES (3, 'St-Ambroise Baltic Porter', 'Strangebrewer', 3, 'Poured deep brown with a creamy tan head. Roasty malt aroma with a licorice note. Full bodied, tight carbonation with a slick mouthfeel. Flavours of heavily roasted malt, slightly burnt but sweet, notes of molasses, raisin, coffee, cocoa, a bit tart.');
+INSERT INTO reviews (beer_pk, beer_name, reviewer_name, rating, review) VALUES (3, 'St-Ambroise Baltic Porter', 'Tessic', 5, 'This porter poured a deep black colour with a creamy, tan coloured head. Nice lacing. Scents include wine, alcohol and light malt. First swig was really good and boozey. Thicker mouthfeel with a flavour burst at first. Flavours of ripe fruit, molasses, alcohol and sweet malt. Finish is medium thick sweet with just malty goodness lingering.');
+INSERT INTO reviews (beer_pk, beer_name, reviewer_name, rating, review) VALUES (3, 'St-Ambroise Baltic Porter', 'Raistlin', 4, 'Pours black with tan head that stays and leaves bit of lacing behind. Aroma of fermented fruit. Taste of dark fruit with dark chocolate finish. Hides alcohol well. Soft carbonation with medium to heavy body.');
 
 /*beer_reviews (JOIN TABLE) */
 INSERT INTO beer_reviews (review_pk, beer_pk) VALUES (1,14);

@@ -17,9 +17,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Reviews {
-	private int reviewPK;
+public class Review {
+	private int reviewPk;
 	private int beerId;
+	
+	@NotNull
+	private String beerName;
+	
+	@NotNull
 	private String reviewerName;
 	
 	@Positive
@@ -32,6 +37,6 @@ public class Reviews {
 	
 	@JsonIgnore
 	public int getReviewPk() {
-		return reviewPK;
+		return reviewPk;
 	}
 }

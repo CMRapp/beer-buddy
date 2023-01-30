@@ -13,7 +13,7 @@ import com.cmrwebstudio.beer.entity.Beer;
 import com.cmrwebstudio.beer.entity.Breweries;
 import com.cmrwebstudio.beer.entity.CatDescription;
 import com.cmrwebstudio.beer.entity.Category;
-import com.cmrwebstudio.beer.entity.Reviews;
+import com.cmrwebstudio.beer.entity.Review;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -87,15 +87,15 @@ public class DefaultBeerBuddyService implements BeerBuddyService {
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<Reviews> fetchReviews(int beerId) {
+	public List<Review> fetchReviews(int beerId) {
 			log.info("The fetchReviews method was called with beerID = {}", beerId);
 			
-			List<Reviews> reviews = beerBuddyDao.fetchReviews(beerId);
+			List<Review> review = beerBuddyDao.fetchReviews(beerId);
 			
-			if(reviews.isEmpty() ) {
+			if(review.isEmpty() ) {
 				String msg = String.format("No reviews found with beerId = %s", beerId);
 				throw new NoSuchElementException(msg);
 			}
-			return reviews;
+			return review;
 	}
 }

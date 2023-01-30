@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cmrwebstudio.beer.entity.Reviews;
+import com.cmrwebstudio.beer.entity.Review;
 import com.cmrwebstudio.beer.service.BeerBuddyService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +28,7 @@ public class DefaultDisplayReviewsController implements DisplayReviewsController
 	private BeerBuddyService beerBuddyService;
 	
 	@Override
-	public List<Reviews> fetchReviews(int beerId) {
+	public List<Review> fetchReviews(int beerId) {
 		log.debug("Retreiving reviews with beer D = {} ", beerId);
 		return beerBuddyService.fetchReviews(beerId);
 	}

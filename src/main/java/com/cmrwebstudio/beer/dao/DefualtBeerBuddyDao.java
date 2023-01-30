@@ -15,7 +15,7 @@ import com.cmrwebstudio.beer.entity.Beer;
 import com.cmrwebstudio.beer.entity.Breweries;
 import com.cmrwebstudio.beer.entity.CatDescription;
 import com.cmrwebstudio.beer.entity.Category;
-import com.cmrwebstudio.beer.entity.Reviews;
+import com.cmrwebstudio.beer.entity.Review;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -163,7 +163,7 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 	}
 
 	@Override
-	public List<Reviews> fetchReviews(int beer_pk) {
+	public List<Review> fetchReviews(int beer_pk) {
 		log.debug("DAO: Beer Id = {} ", beer_pk);
 		// @formatter: off
 			String sql = ""
@@ -182,11 +182,12 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 		return jdbcTemplate.query(sql, params, new RowMapper<>() {
 
 		@Override
-		public Reviews mapRow(ResultSet rs, int rowNum) throws SQLException {
+		public Review mapRow(ResultSet rs, int rowNum) throws SQLException {
 			// @formatter: off
-			return Reviews.builder()
-				.reviewPK(rs.getInt("review_pk"))
+			return Review.builder()
+				.reviewPk(rs.getInt("review_pk"))
 				.beerId(rs.getInt("beer_pk"))
+				.beerName(rs.getString("beer_name"))
 				.reviewerName(rs.getString("reviewer_name"))
 				.rating(rs.getInt("rating"))
 				.review(rs.getString("review"))

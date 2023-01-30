@@ -3,11 +3,11 @@ package com.cmrwebstudio.beer.service;
 import org.springframework.stereotype.Service;
 
 import com.cmrwebstudio.beer.entity.ReviewRequest;
-import com.cmrwebstudio.beer.entity.Reviews;
+import com.cmrwebstudio.beer.entity.Review;
 
 @Service
 public interface ReviewRequestService {
 
-	Reviews createReview(ReviewRequest reviewRequest);
+	Review createReview(ReviewRequest reviewRequest);
 
 }

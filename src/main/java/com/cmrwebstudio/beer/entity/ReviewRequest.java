@@ -25,6 +25,9 @@ public class ReviewRequest {
 	private int beerId;
 	
 	@Length(max = 50)
+	private String beerName;
+	
+	@Length(max = 50)
 	@Pattern(regexp = "[\\w\\s]*")
 	private String reviewerName;
 

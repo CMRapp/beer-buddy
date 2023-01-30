@@ -2,14 +2,14 @@ package com.cmrwebstudio.beer.dao;
 
 import java.util.Optional;
 
-import javax.validation.constraints.NotNull;
 
-import com.cmrwebstudio.beer.entity.Reviews;
+import com.cmrwebstudio.beer.entity.Review;
 
 public interface ReviewRequestDao {
 
-	Optional<Reviews> fetchReview(int beerId);
+	Optional<Review> fetchReview(int beerId, String beerName);
 
-	Reviews saveReview(int beerId, String reviewerName, int rating, String review);
-	
+	Review saveReview(int beerId, String beerName, String reviewerName, int rating, String review);
+
+		
 }

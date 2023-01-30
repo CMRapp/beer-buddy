@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cmrwebstudio.beer.dao.ReviewRequestDao;
 import com.cmrwebstudio.beer.entity.ReviewRequest;
-import com.cmrwebstudio.beer.entity.Reviews;
+import com.cmrwebstudio.beer.entity.Review;
 
 @Service
 public class DefaultReviewRequestService implements ReviewRequestService {
@@ -18,14 +18,15 @@ public class DefaultReviewRequestService implements ReviewRequestService {
 
 	@Transactional
 	@Override
-	public Reviews createReview(ReviewRequest reviewRequest) {
+	public Review createReview(ReviewRequest reviewRequest) {
 		
 		int beerId = getReview(reviewRequest).getBeerId();
+		String beerName = getReview(reviewRequest).getBeerName();
 		String reviewerName = getReview(reviewRequest).getReviewerName();
 		int rating = getReview(reviewRequest).getRating();
 		String review = getReview(reviewRequest).getReview();
-		
-		return reviewRequestDao.saveReview(beerId, reviewerName, rating, review);
+		System.out.println("DAO: beer name = "+beerName);
+		return reviewRequestDao.saveReview(beerId, beerName, reviewerName, rating, review);
 	}
 
 	/**
@@ -33,8 +34,8 @@ public class DefaultReviewRequestService implements ReviewRequestService {
 	 * @param reviewRequest
 	 * @return
 	 */
-	protected Reviews getReview(ReviewRequest reviewRequest) {
-		return reviewRequestDao.fetchReview(reviewRequest.getBeerId())
+	protected Review getReview(ReviewRequest reviewRequest) {
+		return reviewRequestDao.fetchReview(reviewRequest.getBeerId(), reviewRequest.getBeerName())
 				.orElseThrow(() -> new NoSuchElementException("Review for beer with ID = "
 				+ reviewRequest.getBeerId()+ " was not found."));
 	}

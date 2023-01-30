@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.cmrwebstudio.beer.entity.Beer;
-import com.cmrwebstudio.beer.entity.Reviews;
+import com.cmrwebstudio.beer.entity.Review;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
@@ -62,7 +62,7 @@ public interface DisplayReviewsController {
 		
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
-	List<Reviews> fetchReviews(
+	List<Review> fetchReviews(
 			@RequestParam(required = false)	int beerId);
 	
 	// @formatter:on
