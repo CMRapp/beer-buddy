@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.cmrwebstudio.beer.entity.Beer;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.servers.Server;
 
 /** The BeerDetailController interface formats the swagger/OpenAPI Documentation
  *  The BeerDetailController the details of a single beer from the database.
@@ -26,6 +29,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 @RequestMapping("/beer_details")
 
+//configure swagger OpenAPI for testing 
+@OpenAPIDefinition(info = @Info(title = "Beer Buddy World Beer Guide"), servers = {
+		@Server(url = "http://localhost:8080", description = "Local server.")})
 public interface BeerDetailController {
  
 	// @formatter: off

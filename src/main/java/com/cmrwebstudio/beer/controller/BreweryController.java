@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.cmrwebstudio.beer.entity.Breweries;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.servers.Server;
 
 /** The BreweryController interface formats the swagger/OpenAPI Documentation
  *  The BreweryController returns a list of breweries from the database.
@@ -25,6 +28,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
  *  @author cmrap *
  */
 @RequestMapping("/breweries")
+
+//configure swagger OpenAPI for testing 
+@OpenAPIDefinition(info = @Info(title = "Beer Buddy World Beer Guide"), servers = {
+		@Server(url = "http://localhost:8080", description = "Local server.")})
 
 public interface BreweryController {
 

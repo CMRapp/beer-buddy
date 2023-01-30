@@ -45,7 +45,7 @@ class FetchBeerTest {
 			// Given: a valid model, trim and URI
 			Category category = Category.PORTER;			
 			String flavor = "Hoppy";
-			String uri = String.format("%s?category=%s&flavor=%s", getBaseUri(), category, flavor);
+			String uri = String.format("%s?category=%s&flavor=%s", getBaseUriForBeers(), category, flavor);
 	
 			System.out.println("URI: " + uri);
 	
@@ -72,7 +72,7 @@ class FetchBeerTest {
 			// Given: a valid model, trim and URI
 			String category = "Some Beer";
 			String flavor = "Dry";
-			String uri = String.format("%s?category=%s&flavor=%s", getBaseUri(), category, flavor);
+			String uri = String.format("%s?category=%s&flavor=%s", getBaseUriForBeers(), category, flavor);
 	
 			// When: a connection is made to the URI
 			ResponseEntity<Map<String, Object>> response = getRestTemplate().exchange(uri,
@@ -93,7 +93,7 @@ class FetchBeerTest {
 				String category, String flavor, String reason) {
 			 
 			// Given: a valid model, trim and URI
-			String uri = String.format("%s?category=%s&flavor=%s", getBaseUri(), category, flavor);
+			String uri = String.format("%s?category=%s&flavor=%s", getBaseUriForBeers(), category, flavor);
 	
 			// When: a connection is made to the URI
 			ResponseEntity<Map<String, Object>> response = getRestTemplate().exchange(uri,
@@ -142,7 +142,7 @@ class FetchBeerTest {
 			// Given: a valid model, trim and URI
 			Category category = Category.PORTER;
 			String flavor = "Invalid";
-			String uri = String.format("%s?category=%s&flavor=%s", getBaseUri(), category, flavor);
+			String uri = String.format("%s?category=%s&flavor=%s", getBaseUriForBeers(), category, flavor);
 			
 			doThrow(new RuntimeException("Uh-Oh!")).when(beerBuddyService).fetchBeers(category);
 	

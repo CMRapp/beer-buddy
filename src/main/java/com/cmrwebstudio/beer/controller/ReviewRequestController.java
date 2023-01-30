@@ -1,14 +1,15 @@
 package com.cmrwebstudio.beer.controller;
 
-import java.util.List;
+import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.cmrwebstudio.beer.entity.Beer;
+import com.cmrwebstudio.beer.entity.ReviewRequest;
 import com.cmrwebstudio.beer.entity.Reviews;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
@@ -20,31 +21,32 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.servers.Server;
 
-@RequestMapping("/reiews")
+@Validated
+@RequestMapping("/reviews")
 
 //configure swagger OpenAPI for testing 
 @OpenAPIDefinition(info = @Info(title = "Beer Buddy World Beer Guide"), servers = {
 		@Server(url = "http://localhost:8080", description = "Local server.")})
 
-public interface DisplayReviewsController {
+public interface ReviewRequestController {
 
 	// @formatter: off
 	@Operation(
-		summary = "Returns beer reviews",
-		description = "Returns beer reviews based on beer id#",
+		summary = "Create a review for a beer",
+		description = "Returns the created review",
 		responses = {
 				@ApiResponse(
-						responseCode = "200", 
-						description = "A beer review is returned.", 
+						responseCode = "201", 
+						description = "The created review is returned.", 
 						content = @Content(mediaType = "application/json", 
-						schema = @Schema(implementation = Beer.class))),
+						schema = @Schema(implementation = Reviews.class))),
 					@ApiResponse(
 						responseCode = "400", 
 						description = "The request parameters are invalid.", 
 						content = @Content(mediaType = "application/json")),
 					@ApiResponse(
 						responseCode = "404", 
-						description = "No beers were found with the input criteria.", 
+						description = "NA review was not found with the input criteria.", 
 						content = @Content(mediaType = "application/json")),
 					@ApiResponse(
 						responseCode = "500", 
@@ -53,17 +55,15 @@ public interface DisplayReviewsController {
 				},
 				parameters = {
 						@Parameter(
-							name = "Beer Reviews", 
-							allowEmptyValue = false, 
-							required = false, 
-							description = "Beer Id 1 thru 14")
+							name = "Review Request",  
+							required = true, 
+							description = "The review as JSON")
 		}
 	)
 		
-	@GetMapping
-	@ResponseStatus(code = HttpStatus.OK)
-	List<Reviews> fetchReviews(
-			@RequestParam(required = false)	int beerId);
+	@PostMapping
+	@ResponseStatus(code = HttpStatus.CREATED)
+	Reviews createReview(@Valid @RequestBody ReviewRequest reviewRequest);
 	
 	// @formatter:on
 
