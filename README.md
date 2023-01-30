@@ -11,7 +11,7 @@ GET functions:
 - View descritions of a category or style of beer (Pilsner, Ale, Stout, etc)
 
 POST function:
-- Allow user yo post a review on a beer
+- Allow user to post a review on a beer
 
 PUT function
 - Allow user to update a review of a beer.
