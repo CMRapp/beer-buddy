@@ -15,6 +15,7 @@ import com.cmrwebstudio.beer.entity.Beer;
 import com.cmrwebstudio.beer.entity.Breweries;
 import com.cmrwebstudio.beer.entity.CatDescription;
 import com.cmrwebstudio.beer.entity.Category;
+import com.cmrwebstudio.beer.entity.Distributor;
 import com.cmrwebstudio.beer.entity.Review;
 
 import lombok.extern.slf4j.Slf4j;
@@ -195,4 +196,33 @@ public class DefualtBeerBuddyDao implements BeerBuddyDao {
 			// @formatter:on
 			}});
 	}
+
+	@Override
+	public List<Distributor> fetchDistributor(String dist_name) {
+		log.debug("DAO: Dist Name = {} ", dist_name);
+		// @formatter: off
+			String sql = ""
+			+ "SELECT * "
+			+ "FROM distributors "
+			+ "RIGHT JOIN distributor_list " 
+			+ "ON distributors.dist_pk = distributor_list.dist_pk "
+			+ "WHERE distributor_list.beer_pk = :beer_pk "
+			+ "GROUP BY distributors.dist_name ";
+		// @formatter: on
+			Map<String, Object> params = new HashMap<>();
+			params.put("dist_name", dist_name);
+			
+			return jdbcTemplate.query(sql, params, new RowMapper<>() {
+
+			@Override
+			public Distributor mapRow(ResultSet rs, int rowNum) throws SQLException {
+				// @formatter: off
+				return Distributor.builder()
+					.dist_pk(rs.getInt("dist_pk"))
+					.dist_name(rs.getString("dist_name"))
+					.website(rs.getString("website"))
+					.build();
+				// @formatter:on
+				}});
+		}
 }

@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.cmrwebstudio.beer.entity.Beer;
-import com.cmrwebstudio.beer.entity.Review;
+import com.cmrwebstudio.beer.entity.Distributor;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
@@ -20,24 +19,24 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.servers.Server;
 
-@RequestMapping("/reviews")
+@RequestMapping("/distributors")
 
 //configure swagger OpenAPI for testing 
 @OpenAPIDefinition(info = @Info(title = "Beer Buddy World Beer Guide"), servers = {
 		@Server(url = "http://localhost:8080", description = "Local server.")})
 
-public interface DisplayReviewsController {
+public interface DistributorController {
 
 	// @formatter: off
 	@Operation(
-		summary = "Returns beer reviews",
-		description = "Returns beer reviews based on beer id#",
+		summary = "Returns beer distributors",
+		description = "Returns beer distributors based on beer id#",
 		responses = {
 				@ApiResponse(
 						responseCode = "200", 
 						description = "A beer review is returned.", 
 						content = @Content(mediaType = "application/json", 
-						schema = @Schema(implementation = Beer.class))),
+						schema = @Schema(implementation = Distributor.class))),
 					@ApiResponse(
 						responseCode = "400", 
 						description = "The request parameters are invalid.", 
@@ -62,8 +61,7 @@ public interface DisplayReviewsController {
 		
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
-	List<Review> fetchReviews(
-			@RequestParam(required = false)	int beerId);
+	List<Distributor> fetchDistributor(String dist_name);
 	
 	// @formatter:on
 

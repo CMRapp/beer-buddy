@@ -13,6 +13,7 @@ import com.cmrwebstudio.beer.entity.Beer;
 import com.cmrwebstudio.beer.entity.Breweries;
 import com.cmrwebstudio.beer.entity.CatDescription;
 import com.cmrwebstudio.beer.entity.Category;
+import com.cmrwebstudio.beer.entity.Distributor;
 import com.cmrwebstudio.beer.entity.Review;
 
 import lombok.extern.slf4j.Slf4j;
@@ -97,5 +98,18 @@ public class DefaultBeerBuddyService implements BeerBuddyService {
 				throw new NoSuchElementException(msg);
 			}
 			return review;
+	}
+
+	@Override
+	public List<Distributor> fetchDistributor(String dist_name) {
+		log.info("The fetchDistributor method was called with beerID = {}", dist_name);
+		
+		List<Distributor> distributor = beerBuddyDao.fetchDistributor(dist_name);
+		
+		if(distributor.isEmpty() ) {
+			String msg = String.format("No distributor found for beer with with beerId = %s", dist_name);
+			throw new NoSuchElementException(msg);
+		}
+		return distributor;
 	}
 }

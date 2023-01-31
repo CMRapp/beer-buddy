@@ -61,6 +61,7 @@ public class BeerBuddy {
 		System.out.println("*                 BBBBB   EEEEE   EEEE    RR  R                 *");
 		System.out.println("*                                                               *");
 		System.out.println("*                         B  U  D  D  Y                         *");
+		System.out.println("*                             v2.6                              *");
 		System.out.println("*                                                               *");
 		System.out.println("*                        by cmrwebstudio                        *");
 		System.out.println("*                                                               *");

@@ -29,4 +29,12 @@ public class BaseTest {
 	protected String getBaseUriForReviews() {
 		return String.format("http://localhost:%d/reviews", serverPort);
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	protected String getBaseUriForDistributors() {
+		return String.format("http://localhost:%d/distributors", serverPort);
+	}
 }

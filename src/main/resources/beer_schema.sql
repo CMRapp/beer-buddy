@@ -42,8 +42,15 @@ PRIMARY KEY (review_pk),
 FOREIGN KEY (beer_pk) REFERENCES beers (beer_pk) ON DELETE CASCADE
 );
 
+DROP TABLE IF EXISTS distributors;
+CREATE TABLE distributors (
+dist_pk INT AUTO_INCREMENT NOT NULL,
+dist_name VARCHAR (35) NOT NULL,
+website VARCHAR(150),
+PRIMARY KEY (dist_pk)
+);
 
-/* JOIN TABLE */
+/* JOIN TABLE #1 */
 DROP TABLE IF EXISTS beer_reviews;
 CREATE TABLE beer_reviews (
 review_pk INT NOT NULL,
@@ -52,6 +59,14 @@ FOREIGN KEY (review_pk) REFERENCES reviews (review_pk) ON DELETE CASCADE,
 FOREIGN KEY (beer_pk) REFERENCES beers (beer_pk) ON DELETE CASCADE
 );
 
+/* JOIN TABLE #2 */
+DROP TABLE IF EXISTS distributor_list;
+CREATE TABLE distributor_list (
+dist_pk INT NOT NULL,
+beer_pk INT NOT NULL,
+FOREIGN KEY (dist_pk) REFERENCES distributors (dist_pk) ON DELETE CASCADE,
+FOREIGN KEY (beer_pk) REFERENCES beers (beer_pk) ON DELETE CASCADE
+);
 
 /* Category Names */
 INSERT INTO category (name) VALUES ('ALE');
@@ -172,3 +187,47 @@ INSERT INTO beer_reviews (review_pk, beer_pk) VALUES (6,9);
 INSERT INTO beer_reviews (review_pk, beer_pk) VALUES (7,3);
 INSERT INTO beer_reviews (review_pk, beer_pk) VALUES (8,3);
 INSERT INTO beer_reviews (review_pk, beer_pk) VALUES (9,3);
+
+/* Distributors */
+INSERT INTO distributors (dist_name, website) VALUES ('Total Wine & More', 'https://www.totalwine.com/');
+INSERT INTO distributors (dist_name, website) VALUES ('Drizly', 'https://drizly.com');
+INSERT INTO distributors (dist_name, website) VALUES ('Craftshack', 'https://craftshack.com/');
+INSERT INTO distributors (dist_name, website) VALUES ('Instacart', 'https://www.instacart.com/');
+INSERT INTO distributors (dist_name, website) VALUES ('Upstream Brewing Company', 'https://www.upstreambrewing.com');
+INSERT INTO distributors (dist_name, website) VALUES ('The Mcauslan Brewery', 'https://mcauslan.com/en');
+
+/* Distributor List */
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (6, 1);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (6, 2);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (6, 3);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (1, 4);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (2, 4);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (3, 4);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (1, 5);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (2, 5);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (4, 5);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (1, 6);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (2, 6);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (4, 6);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (1, 7);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (2, 7);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (4, 7);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (1, 8);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (2, 8);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (4, 8);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (1, 9);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (2, 9);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (4, 9);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (1, 10);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (2, 10);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (4, 10);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (1, 11);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (2, 11);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (4, 11);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (3, 12);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (4, 12);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (3, 13);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (5, 13);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (3, 14);
+INSERT INTO distributor_list (dist_pk, beer_pk) VALUES (5, 14);
+
