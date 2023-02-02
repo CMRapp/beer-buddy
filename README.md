@@ -1,5 +1,5 @@
 # Beer Buddy
-Repository for the Promineo Tech Beck End Developer FInal Project. Project is a Spring Boot REST service that allows users to browse beers in a database. Database contains beers of different styles or categories from different breweries as well as reviews from people that have tried the beers.
+Repository for the Promineo Tech Beck End Developer FInal Project. Project is a Spring Boot REST service that allows users to browse beers in a database. Database contains beers of different styles or categories from different breweries as well as reviews from people that have tried the beers. Database also contains a distributors list, which a use can edit.
 
 The service will allow users to:
 
