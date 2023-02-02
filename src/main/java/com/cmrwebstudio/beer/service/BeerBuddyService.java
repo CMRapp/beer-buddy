@@ -6,7 +6,6 @@ import com.cmrwebstudio.beer.entity.Beer;
 import com.cmrwebstudio.beer.entity.Breweries;
 import com.cmrwebstudio.beer.entity.CatDescription;
 import com.cmrwebstudio.beer.entity.Category;
-import com.cmrwebstudio.beer.entity.Distributor;
 import com.cmrwebstudio.beer.entity.Review;
 
 public interface BeerBuddyService {
@@ -27,7 +26,4 @@ public interface BeerBuddyService {
 	List<Beer> fetchBeerDetails(int beerId);
 
 	List<Review> fetchReviews(int beerId);
-
-	List<Distributor> fetchDistributor(String dist_name);
-
 }

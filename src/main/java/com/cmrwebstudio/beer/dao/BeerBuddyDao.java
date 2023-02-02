@@ -6,7 +6,6 @@ import com.cmrwebstudio.beer.entity.Beer;
 import com.cmrwebstudio.beer.entity.Breweries;
 import com.cmrwebstudio.beer.entity.CatDescription;
 import com.cmrwebstudio.beer.entity.Category;
-import com.cmrwebstudio.beer.entity.Distributor;
 import com.cmrwebstudio.beer.entity.Review;
 
 /** The BeerBuddyDao interface calls the methods of the controllers.
@@ -32,7 +31,7 @@ public interface BeerBuddyDao {
 
 	List<Review> fetchReviews(int beerId);
 
-	List<Distributor> fetchDistributor(String dist_name);
+
 	
 
 }

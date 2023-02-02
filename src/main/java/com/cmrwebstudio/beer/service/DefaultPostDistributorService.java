@@ -18,6 +18,10 @@ public class DefaultPostDistributorService implements PostDistributorService {
 
 	@Transactional
 	@Override
+	
+	/**
+	 * Creates a new distributor
+	 */
 	public Distributor createDistributor(DistributorPostRequest distributorPostRequest) {
 		
 		String distName = getDistributor(distributorPostRequest).getDist_name();
@@ -26,7 +30,7 @@ public class DefaultPostDistributorService implements PostDistributorService {
 	}
 
 	/**
-	 * 
+	 * Retrieves distributor by ID
 	 * @param reviewRequest
 	 * @return
 	 */

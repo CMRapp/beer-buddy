@@ -13,7 +13,6 @@ import com.cmrwebstudio.beer.entity.Beer;
 import com.cmrwebstudio.beer.entity.Breweries;
 import com.cmrwebstudio.beer.entity.CatDescription;
 import com.cmrwebstudio.beer.entity.Category;
-import com.cmrwebstudio.beer.entity.Distributor;
 import com.cmrwebstudio.beer.entity.Review;
 
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +27,8 @@ public class DefaultBeerBuddyService implements BeerBuddyService {
 	
 	@Transactional(readOnly = true)
 	@Override
+	
+	//Returns list of beers by category
 	public List<Beer> fetchBeers(Category category) {
 		log.info("The fetchBeers method was called with category = {}", category);
 		
@@ -43,6 +44,8 @@ public class DefaultBeerBuddyService implements BeerBuddyService {
 
 	@Transactional(readOnly = true)
 	@Override
+	
+	// Returns brewery by Id
 	public List<Breweries> fetchBrewery(int brewery) {
 		log.info("The fetchBrewery method was called with id = {}", brewery);
 		
@@ -58,6 +61,7 @@ public class DefaultBeerBuddyService implements BeerBuddyService {
 
 	@Transactional(readOnly = true)
 	@Override
+	// Returns Category description by ID
 	public List<CatDescription> fetchDescription(Category category) {
 		log.info("The fetchDescription method was called with desc = {}", category);
 		
@@ -73,6 +77,7 @@ public class DefaultBeerBuddyService implements BeerBuddyService {
 
 	@Transactional(readOnly = true)
 	@Override
+	// Returns details of a beer by ID
 	public List<Beer> fetchBeerDetails(int beerId) {
 		log.info("The fetchDescription method was called with desc = {}", beerId);
 		
@@ -88,6 +93,7 @@ public class DefaultBeerBuddyService implements BeerBuddyService {
 
 	@Transactional(readOnly = true)
 	@Override
+	// Returns reviews of a beer provided a beer ID
 	public List<Review> fetchReviews(int beerId) {
 			log.info("The fetchReviews method was called with beerID = {}", beerId);
 			
@@ -100,16 +106,4 @@ public class DefaultBeerBuddyService implements BeerBuddyService {
 			return review;
 	}
 
-	@Override
-	public List<Distributor> fetchDistributor(String dist_name) {
-		log.info("The fetchDistributor method was called with beerID = {}", dist_name);
-		
-		List<Distributor> distributor = beerBuddyDao.fetchDistributor(dist_name);
-		
-		if(distributor.isEmpty() ) {
-			String msg = String.format("No distributor found for beer with with beerId = %s", dist_name);
-			throw new NoSuchElementException(msg);
-		}
-		return distributor;
-	}
 }

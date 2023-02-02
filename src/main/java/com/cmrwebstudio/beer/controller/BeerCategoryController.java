@@ -26,7 +26,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
  *  
  *  The RequestMapping annotation is used to inform Spring the following data will be mapped
  *  to the URI listed
- *  @author cmrap *
+ *  @author cmrapp *
  */
 
 @RequestMapping("/beers")

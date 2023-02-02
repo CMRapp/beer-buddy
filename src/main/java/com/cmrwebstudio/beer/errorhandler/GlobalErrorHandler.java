@@ -19,7 +19,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-
+/**
+ * The GlobalErrorHandler handles any exceptions that may occur in execution
+ * @author cmrapp
+ *
+ */
 @RestControllerAdvice
 @Slf4j
 

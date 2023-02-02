@@ -38,7 +38,7 @@ public interface DistributorPostController {
 		responses = {
 				@ApiResponse(
 						responseCode = "201", 
-						description = "The created review is returned.", 
+						description = "The created distributor is returned.", 
 						content = @Content(mediaType = "application/json", 
 						schema = @Schema(implementation = Review.class))),
 					@ApiResponse(

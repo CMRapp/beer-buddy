@@ -18,6 +18,7 @@ public class DefaultReviewRequestService implements ReviewRequestService {
 
 	@Transactional
 	@Override
+	// Create a review of a beer
 	public Review createReview(ReviewRequest reviewRequest) {
 		
 		int beerId = getReview(reviewRequest).getBeerId();
@@ -29,11 +30,7 @@ public class DefaultReviewRequestService implements ReviewRequestService {
 		return reviewRequestDao.saveReview(beerId, beerName, reviewerName, rating, review);
 	}
 
-	/**
-	 * 
-	 * @param reviewRequest
-	 * @return
-	 */
+	// Returns Reviews of a beer by beer ID
 	protected Review getReview(ReviewRequest reviewRequest) {
 		return reviewRequestDao.fetchReview(reviewRequest.getBeerId(), reviewRequest.getBeerName())
 				.orElseThrow(() -> new NoSuchElementException("Review for beer with ID = "
