@@ -33,6 +33,13 @@ public interface DistributorController {
 			@RequestParam(required = true) String dist_name,
 			@RequestParam(required = true) String website);
 	
+	@PostMapping("/updateDistributor")
+	@ResponseStatus(code = HttpStatus.CREATED)
+	Optional<Distributor> updateDistributor(
+			@RequestParam(required = true) int dist_pk,
+			@RequestParam(required = true) String dist_name,
+			@RequestParam(required = true) String website);
+	
 	@DeleteMapping("/deleteDistributor")
 	@ResponseStatus(code= HttpStatus.CREATED)
 	Optional<Distributor> deleteDistributor(

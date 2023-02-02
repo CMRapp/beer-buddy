@@ -67,6 +67,25 @@ public class DistributorDao implements DistributorDaoInterface {
 					);
 		}
 		
+		// update an existing distributor
+		public Optional<Distributor> updateDistributor(int distId, String distName, String website){
+			String sql = ""
+					+ "UPDATE distributors "
+					+ "SET dist_name = :distName, website = :website "
+					+ "WHERE dist_pk = :distId";
+			Map<String, Object> params = new HashMap<>();
+			params.put("dist_name", distName);
+			params.put("website", website);
+			jdbcTemplate.update(sql,  params);
+			
+			return Optional.ofNullable(Distributor
+					.builder()
+					.dist_name(distName)
+					.website(website)
+					.build()
+					);
+		}
+		
 		// delete a distributor
 		@Override
 		public Optional<Distributor> deleteDistributor(int dist_pk){
